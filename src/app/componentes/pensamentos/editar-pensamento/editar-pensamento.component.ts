@@ -35,6 +35,7 @@ export class EditarPensamentoComponent implements OnInit {
           minusculoValidator
         ])],
         modelo: [pensamento.modelo],
+        favorito: [pensamento.favorito],
         id: [pensamento.id]
       });
     });

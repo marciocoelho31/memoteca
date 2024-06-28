@@ -47,4 +47,9 @@ export class PensamentoService {
     return this.http.get<Pensamento>(url);
   }
 
+  favoritar(pensamento: Pensamento): Observable<Pensamento> {
+    pensamento.favorito = !pensamento.favorito;
+    return this.editar(pensamento);
+  }
+
 }
