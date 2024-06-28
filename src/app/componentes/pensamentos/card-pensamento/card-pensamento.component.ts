@@ -17,6 +17,8 @@ export class CardPensamentoComponent implements OnInit {
     favorito: false
   }
 
+  @Input() listaFavoritos: Pensamento[] = [];
+
   constructor(private service: PensamentoService) { }
 
   ngOnInit(): void {
@@ -34,7 +36,12 @@ export class CardPensamentoComponent implements OnInit {
   }
 
   favoritarPensamento() {
-    this.service.favoritar(this.pensamento).subscribe();
+    this.service.favoritar(this.pensamento).subscribe(() => {
+      if (!this.pensamento.favorito) {
+        console.log('desmarcou');
+        this.listaFavoritos.splice(this.listaFavoritos.indexOf(this.pensamento), 1);
+      }
+    });
   }
 
 }
